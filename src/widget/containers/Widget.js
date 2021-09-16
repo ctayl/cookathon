@@ -1,8 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import Game from './Game';
 
 const Widget = () => (
-  <h1>Widget - Hello World!</h1>
+  <Game/>
 );
 
 export default hot(Widget);
