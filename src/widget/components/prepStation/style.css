@@ -1,0 +1,17 @@
+.section-title {
+  margin-bottom: 0;
+  margin-top: .5rem;
+}
+.stations-container{
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: .5rem 0;
+  justify-content: space-between;
+}
+
+
+.station-item {
+}
+
