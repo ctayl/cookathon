@@ -1,0 +1,2 @@
+### Data Access / Data Loading
+Data loading is the process of copying and loading data or data sets from a source file, folder or application to a database or similar application. It is usually implemented by copying digital data from a source and pasting or loading the data to a data storage or processing utility.
