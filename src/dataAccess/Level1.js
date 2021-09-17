@@ -6,7 +6,7 @@ export const level1 = {
     "name": "Level 1",
     "kitchen": smallKitchen, 
     "orders":[
-        [ smallOrder ]
+        smallOrder
     ],
     "goal":300
 }

@@ -6,7 +6,7 @@ export default function OrderItem({order}) {
       <div className="order-img">
       </div>
       <div className="order-title">
-        <span> {order.name}</span>
+        <span> {order.recipes[0].name}</span>
       </div>
       <div className="order-recipe">
       </div>
