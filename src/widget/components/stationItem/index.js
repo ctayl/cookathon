@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DropTarget } from "react-dnd";
 import './style.css'
- function StationItem ({accepts, droppedItems, isOver, canDrop, connectDropTarget, children}) {
+ function StationItem ({droppedItems, isOver, canDrop, connectDropTarget,children }) {
   const isActive = isOver && canDrop;
     let backgroundColor = '';
    if (isActive) {
