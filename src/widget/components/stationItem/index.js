@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DropTarget } from "react-dnd";
 import './style.css'
- function StationItem ({droppedItems, isOver, canDrop, connectDropTarget,}) {
+ function StationItem ({accepts, droppedItems, isOver, canDrop, connectDropTarget, children}) {
   const isActive = isOver && canDrop;
     let backgroundColor = '';
    if (isActive) {
@@ -13,7 +13,7 @@ import './style.css'
    console.log(droppedItems);
   return connectDropTarget (
     <div className="station" ref={connectDropTarget} style={{ backgroundColor }}>
-      {JSON.stringify(droppedItems)}
+      {children}
     </div>
   );
 }

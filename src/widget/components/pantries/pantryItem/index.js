@@ -21,6 +21,11 @@ import { DragSource } from 'react-dnd';
 
 export default DragSource((props) => props.type, {
   beginDrag: (props) => ({ pantry: props.pantry}),
+  endDrag: (props, monitor, component) => {
+    if (monitor.didDrop() && props.onDrop) {
+      props.onDrop(monitor.getItem());
+    }
+  },
 }, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),

@@ -1,18 +1,44 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { STATE } from "../../../data/Enums";
+import PantryItem from "../pantries/pantryItem";
 import StationItem from "../stationItem";
 import './style.css'
-export default function ServingStations() {
-  const [count, setCount] = useState(0);
-  const prepStations = [
-    'station1',
-    'station2',
-    'station3',
-  ];
+export default function ServingStations({servingStations}) {
+  const accepts = [STATE.COOKED];
+  const [stations, setStations] = useState({});
 
-  const listItems = prepStations.map((station) =>
-      <div className="station-item">
-        <StationItem station={station}/>
-      </div>
+  useEffect(() => {
+    prepareStations()
+  }, [])
+
+  const prepareStations = () => {
+    const servingStat = {};
+    for (let i = 0; i < servingStations.length; i++) {
+      servingStat[i] = [];
+    }
+    setStations(servingStat);
+  }
+
+  const handleDrop = useCallback((index, item) => {
+    
+    setStations({ ...stations, [index]: [...stations[index], item.pantry] });
+
+    console.log("Serving Station",stations);
+
+  }, [stations]);
+
+  
+
+  const listItems = Object.values(stations).map((droppedItems, index) =>(
+    <div className="station-item">
+      <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={true}
+        onDrop={(item) => handleDrop(index, item)} key={index} >
+        {droppedItems.length > 0 ? (
+          droppedItems.map((droppedItem,index) => <PantryItem pantry={droppedItem} key={index}  type= {STATE.COOKED}/>)
+        ) : null}
+      </StationItem>
+    </div>
+    )
   );
   return (
     <div>
