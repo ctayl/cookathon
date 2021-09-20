@@ -10,11 +10,11 @@
   padding: .5rem 0;
 }
 
-.orders-container::-webkit-scrollbar {
+.pantries-container::-webkit-scrollbar {
   display: none;
 }
 
-.orders-container {
+.pantries-container {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }

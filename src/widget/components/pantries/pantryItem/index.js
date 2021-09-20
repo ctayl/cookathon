@@ -19,7 +19,7 @@ import { DragSource } from 'react-dnd';
 }
 
 
-export default DragSource((props) => props.pantry.type, {
+export default DragSource((props) => props.type, {
   beginDrag: (props) => ({ pantry: props.pantry}),
 }, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
