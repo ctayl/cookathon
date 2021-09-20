@@ -1,8 +1,7 @@
 .pantry {
   height: 80px;
   width: 70px;
-  background: rgb(252, 170, 170);
-  border: 1px solid rgb(228, 228, 228);  padding: .5rem;
+  border: 1px solid rgb(228, 228, 228);
   margin: .2rem;
   border-radius: .2rem;
   cursor: grab;
@@ -10,4 +9,13 @@
 
 .pantry-title {
   font-size: 13px;
+  text-align: center;
+}
+
+.pantry-img-block{
+  text-align: center;
+}
+
+.pantry-img{
+  width:60px;
 }

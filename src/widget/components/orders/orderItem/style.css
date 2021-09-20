@@ -6,8 +6,22 @@
   margin: .2rem;
   border-radius: .2rem;
   cursor: pointer;
+
+  background: #3F467E;
+  border-radius: 1rem 1rem .5rem .5rem;
+  background: linear-gradient(0deg, #313868 0%, #3F467E 100%);
 }
+
 
 .order-title {
   font-size: 13px;
+  text-align: center;
+}
+
+.order-img-block{
+  text-align: center;
+}
+
+.order-img{
+  width:60px;
 }
