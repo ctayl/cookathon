@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import './style.css'
-export default function PantryItem({pantry}) {
-  return (
-    <div className="pantry">
+import { DragSource } from 'react-dnd';
+
+ function PantryItem({pantry, isDragging, connectDragSource}) {
+
+  const opacity = isDragging ? 0.4 : 1;
+
+  return connectDragSource (
+    <div className="pantry" style={{opacity}}>
       <div className="pantry-img">
       </div>
       <div className="pantry-title">
@@ -12,3 +17,11 @@ export default function PantryItem({pantry}) {
     </div>
   );
 }
+
+
+export default DragSource((props) => props.pantry.type, {
+  beginDrag: (props) => ({ pantry: props.pantry}),
+}, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging(),
+}))(PantryItem);
