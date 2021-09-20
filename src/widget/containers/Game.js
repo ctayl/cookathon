@@ -1,8 +1,10 @@
-import React, { Component, useState } from "react";
-import CookingStations from "../components/cookingStation";
+import React, { Component } from "react";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import Orders from "../components/orders";
 import Pantries from "../components/pantries";
 import PrepStations from "../components/prepStation";
+import CookingStations from "../components/cookingStation";
 import ServingStations from "../components/servingStation";
 
 import { level1 } from "../../dataAccess/Level1";
@@ -66,10 +68,12 @@ export default class Game extends Component {
     return (
       <div>
         <Orders orders={orders} />
-        <Pantries pantryItems={pantryItems} />
-        <PrepStations prepStations={prepStations} />
-        <CookingStations cookingStations={cookingStations} />
-        <ServingStations servingStations={servingStations} />
+        <DndProvider backend={HTML5Backend}>
+          <Pantries pantryItems={pantryItems} />
+          <PrepStations prepStations={prepStations} />
+          <CookingStations cookingStations={cookingStations} />
+          <ServingStations servingStations={servingStations} />
+        </DndProvider>
       </div>
     );
   }
