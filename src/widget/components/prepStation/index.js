@@ -3,7 +3,7 @@ import { STATE } from "../../../data/Enums";
 import PantryItem from "../pantries/pantryItem";
 import StationItem from "../stationItem";
 import './style.css'
-export default function PrepStations({ prepStations }) {
+export default function PrepStations({ prepStations,prepStationClick }) {
   const accepts = [STATE.RAW];
   const [stations, setStations] = useState({});
   const [pantry, setPantry] = useState(null);
@@ -36,13 +36,21 @@ export default function PrepStations({ prepStations }) {
 
   }, [stations]);
 
-  
 
+  const callGamePrepStationClick=(droppedItems,index)=>{
+    prepStationClick(droppedItems,index,(completed,image)=>{
+      if(completed){
+        droppedItems[0].state=STATE.PREPPED;
+        droppedItems[0].image=image;
+        setStations({...stations,[index]:[droppedItems[0]]});
+      }
+    })
+  }
   const listItems = Object.values(stations).map((droppedItems, index) =>(
-    <div className="station-item">
-      <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={false}
+    <div className="station-item" onClick={()=>callGamePrepStationClick(droppedItems,index)}>
+      <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={false} 
         onDrop={(item) => handleDrop(index, item)} key={index} >
-        {droppedItems.length > 0 ? (<PantryItem pantry={droppedItems[0]}   type= {STATE.PREPPED} onDrop={(item) => handleRemove(index, item)}/>) : null}
+        {droppedItems.length > 0 ? (<PantryItem pantry={droppedItems[0]} type= {STATE.PREPPED} onDrop={(item) => handleRemove(index, item)}/>) : null}
       </StationItem>
     </div>
     )
