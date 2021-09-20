@@ -34,7 +34,7 @@ export default function ServingStations({servingStations}) {
       <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={true}
         onDrop={(item) => handleDrop(index, item)} key={index} >
         {droppedItems.length > 0 ? (
-          droppedItems.map((droppedItem,index) => <PantryItem pantry={droppedItem} key={index}  type= {STATE.COOKED}/>)
+          droppedItems.map((droppedItem,index) => <PantryItem pantry={droppedItem} key={index}/>)
         ) : null}
       </StationItem>
     </div>

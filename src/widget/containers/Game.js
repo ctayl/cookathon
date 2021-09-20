@@ -9,6 +9,7 @@ import ServingStations from "../components/servingStation";
 
 import { level1 } from "../../dataAccess/Level1";
 import { basicPantries } from "../../dataAccess/BasicPantries";
+import './style.css'
 
 export default class Game extends Component {
   constructor(props) {
@@ -67,6 +68,9 @@ export default class Game extends Component {
     const { prepStations, cookingStations, servingStations, pantryItems, orders } = this.state;
     return (
       <div>
+        <div className="score">
+          <span>SCORE 0$</span>
+        </div>
         <Orders orders={orders} />
         <DndProvider backend={HTML5Backend}>
           <Pantries pantryItems={pantryItems} />
