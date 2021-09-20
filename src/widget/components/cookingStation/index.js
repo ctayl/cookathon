@@ -41,7 +41,7 @@ export default function CookingStations({cookingStations}) {
 
   const listItems = Object.values(stations).map((droppedItems, index) =>(
     <div className="station-item">
-      <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={true}
+      <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={true} color={"#a21a1a7d"}
         onDrop={(item) => handleDrop(index, item)} key={index} >
         {droppedItems.length > 0 ? (
           droppedItems.map((droppedItem,index) => <PantryItem pantry={droppedItem} key={index}  type= {STATE.COOKED} onDrop={(item) => handleRemove(index, item)}/>)
