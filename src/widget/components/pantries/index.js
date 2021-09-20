@@ -3,31 +3,11 @@ import { STATE } from "../../../data/Enums";
 import PantryItem from "./pantryItem";
 import './style.css'
 export default function Pantries({ pantryItems }) {
-  const [count, setCount] = useState(0);
-  // const pantries = [
-  //   {
-  //     name: "Pantry 1",
-  //     images: {
-  //       raw: '',
-  //       prepped: '',
-  //       cooked: ''
-  //     }
-  //   },
-  //   {
-  //     name: "Pantry 2",
-  //     recipe: []
-  //   },
-  //   {
-  //     name: "Pantry 3",
-  //     recipe: []
-  //   },
-    
-  // ];
-
+ 
   const listItems = pantryItems.map((pantry, index) =>
-      <div className="pantry-item">
-        <PantryItem pantry={pantry} key={ index } type= {STATE.PREPPED}/>
-      </div>
+    <div className="pantry-item">
+      <PantryItem pantry={pantry} key={ index } type= {STATE.RAW}/>
+    </div>
   );
   return (
     <div>

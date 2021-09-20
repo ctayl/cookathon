@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { STATE } from "../../../data/Enums";
-import pantryItem from "../pantries/pantryItem";
+import PantryItem from "../pantries/pantryItem";
 import StationItem from "../stationItem";
 import './style.css'
-export default function PrepStations({  }) {
-  const accepts = [STATE.PREPPED];
+export default function PrepStations({ prepStations }) {
+  const accepts = [STATE.RAW];
   const [stations, setStations] = useState({});
   const [pantry, setPantry] = useState(null);
 
@@ -14,7 +14,7 @@ export default function PrepStations({  }) {
 
   const prepareStations = () => {
     const prepStat = {};
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < prepStations.length; i++) {
       prepStat[i] = [];
     }
     setStations(prepStat);
@@ -22,9 +22,17 @@ export default function PrepStations({  }) {
 
   const handleDrop = useCallback((index, item) => {
     
-    setStations({ ...stations, [index]: stations[index].push(item.pantry) });
+    setStations({ ...stations, [index]: [...stations[index], item.pantry] });
 
-    console.log(stations);
+    console.log("Prep Station",stations);
+
+  }, [stations]);
+
+  const handleRemove = useCallback((index, item) => {
+    
+    setStations({ ...stations, [index]: [] });
+
+    console.log("Remove Dropped",index, item);
 
   }, [stations]);
 
@@ -34,7 +42,7 @@ export default function PrepStations({  }) {
     <div className="station-item">
       <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={false}
         onDrop={(item) => handleDrop(index, item)} key={index} >
-        {droppedItems.length > 0 ? (<pantryItem pantry={droppedItems[0]}/>) : null}
+        {droppedItems.length > 0 ? (<PantryItem pantry={droppedItems[0]}   type= {STATE.PREPPED} onDrop={(item) => handleRemove(index, item)}/>) : null}
       </StationItem>
     </div>
     )

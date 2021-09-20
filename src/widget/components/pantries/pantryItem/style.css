@@ -1,7 +1,7 @@
 .pantry {
   height: 80px;
   width: 70px;
-  background: #fff;
+  background: rgb(252, 170, 170);
   border: 1px solid rgb(228, 228, 228);  padding: .5rem;
   margin: .2rem;
   border-radius: .2rem;
