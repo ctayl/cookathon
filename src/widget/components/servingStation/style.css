@@ -11,14 +11,14 @@
   justify-content: space-between;
 }
 
-.trash-img-block {
+.img-block {
   text-align: center;
   height: 80px;
   width: 70px;
   overflow: hidden;
 }
 
-.trash-img-block img {
+.img-block img {
   width: 100%;
   object-fit: contain;
   overflow: hidden;

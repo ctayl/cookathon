@@ -7,6 +7,7 @@ export default function ServingStations({servingStations, completeOrders}) {
   const accepts = [STATE.COOKED];
   const trashAccepts = [STATE.COOKED, STATE.PREPPED, STATE.RAW];
   const [stations, setStations] = useState({});
+  const [doneStation, setDoneStation] = useState({});
 
   useEffect(() => {
     prepareStations()
@@ -24,12 +25,17 @@ export default function ServingStations({servingStations, completeOrders}) {
     
     setStations({ ...stations, [index]: [...stations[index], item.pantry] });
 
-    completeOrders(stations[index], (done) => {
-      
+    completeOrders([...stations[index], item.pantry], (done, recipe) => {
+      if (done) {
+        setDoneStation({ index, image: recipe.image });
+        setTimeout(() => {
+          setStations({ ...stations, [index]: [] });
+          setDoneStation({ });
+        }, 2000);
+      }
     })
-    console.log("Serving Station",stations);
 
-  }, [stations]);
+  }, [stations, doneStation]);
 
   
 
@@ -37,9 +43,11 @@ export default function ServingStations({servingStations, completeOrders}) {
     <div className="station-item">
       <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={true} color={"#9ba3ff"}
         onDrop={(item) => handleDrop(index, item)} key={index} >
-        {droppedItems.length > 0 ? (
+        {droppedItems.length > 0  && doneStation.index !== index ? (
           droppedItems.map((droppedItem,index) => <PantryItem pantry={droppedItem} key={index}/>)
-        ) : null}
+        ) : doneStation.index === index ? <div className="img-block">
+          <img src={doneStation.image} alt="" />
+      </div> : null}
       </StationItem>
     </div>
     )
@@ -49,7 +57,7 @@ export default function ServingStations({servingStations, completeOrders}) {
       <h4 className="section-title">Serving Station</h4>
       <div className="stations-container">
         <StationItem accepts={trashAccepts}  acceptMultiple={true} >
-          <div className="trash-img-block">
+          <div className="img-block">
             <img src="../widget/images/trash.png" alt="" />
           </div>
         </StationItem>
