@@ -10,7 +10,6 @@ import './style.css'
    else if (canDrop) {
      backgroundColor = 'darkkhaki';
    }
-   console.log(droppedItems);
   return connectDropTarget (
     <div className="station" style={{backgroundColor:color}} ref={connectDropTarget}>
       {children}
@@ -20,7 +19,9 @@ import './style.css'
 
 export default DropTarget((props) => props.accepts, {
   drop(props, monitor) {
+    if (props.onDrop) {
       props.onDrop(monitor.getItem());
+     }
   },
   canDrop(props, monitor) {
     if (props.acceptMultiple) {

@@ -1,9 +1,32 @@
+.start-game-block {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-game-block button {
+  border-radius: 10px;
+  border: 2px solid #e8da41;
+  font-size: 22px;
+  background: transparent;
+  color: #e8da41;
+  padding: 0.6rem 1rem;
+  letter-spacing: 1.5px;
+}
+
+.start-game-block button:hover {
+  color: #2e2e2e;
+  background: #e8da41;
+  transition: .3s all;
+}
+
 .score {
   height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #82711f;
 }
 
 .score  span {

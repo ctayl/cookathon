@@ -5,6 +5,7 @@ import StationItem from "../stationItem";
 import './style.css'
 export default function ServingStations({servingStations, completeOrders}) {
   const accepts = [STATE.COOKED];
+  const trashAccepts = [STATE.COOKED, STATE.PREPPED, STATE.RAW];
   const [stations, setStations] = useState({});
 
   useEffect(() => {
@@ -47,7 +48,12 @@ export default function ServingStations({servingStations, completeOrders}) {
     <div>
       <h4 className="section-title">Serving Station</h4>
       <div className="stations-container">
-          {listItems}
+        <StationItem accepts={trashAccepts}  acceptMultiple={true} >
+          <div className="trash-img-block">
+            <img src="../widget/images/trash.png" alt="" />
+          </div>
+        </StationItem>
+        {listItems}
       </div>
     </div>
   );

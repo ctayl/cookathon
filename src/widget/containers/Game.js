@@ -73,7 +73,9 @@ export default class Game extends Component {
   
   render() {
     const { currentLevel } = this.state;
-    if (!currentLevel) return <div onClick={this.start}>Start Game</div>;
+    if (!currentLevel) return <div className="start-game-block">
+      <button type="button" onClick={this.start}>Start Game</button>
+    </div>;
 
     const { prepStations, cookingStations, servingStations, pantryItems, orders } = this.state;
 
