@@ -50,7 +50,7 @@ export default function PrepStations({ prepStations,prepStationClick }) {
     <div className="station-item" onClick={()=>callGamePrepStationClick(droppedItems,index)}>
       <StationItem accepts={accepts} droppedItems={droppedItems} acceptMultiple={false} color={'#8243EC'}
         onDrop={(item) => handleDrop(index, item)} key={index} >
-        {droppedItems.length > 0 ? (<PantryItem pantry={droppedItems[0]} type= {STATE.PREPPED} onDrop={(item) => handleRemove(index, item)}/>) : null}
+        {droppedItems.length > 0 ? (<PantryItem pantry={droppedItems[0]} type= {droppedItems[0].state} onDrop={(item) => handleRemove(index, item)}/>) : null}
       </StationItem>
     </div>
     )
