@@ -89,8 +89,8 @@ export default class Game extends Component {
             const recp = order.recipes[r];
             for (let s = 0; s < recp.stages.length; s++) {
               const stage = recp.stages[s];
-              let find=stage.pantries.find(el=>el.id==clickedOn.id);
-              if(find){
+              let find = stage.pantries.find(el => el.id === clickedOn.id);
+              if (find) {
                 if(stage.state == STATE.RAW && stage.action == ACTIONS.PREP){
                   if(stage.prepClicks>0){
                     stage.prepClicks=stage.prepClicks-1;
@@ -107,14 +107,15 @@ export default class Game extends Component {
       return callback(false,null);
     };
 
-    const completeOrders = (droppedItems, callback) =>{
+    const completeOrders = (droppedItems, callback) => {
       if (droppedItems && droppedItems.length > 0) {
         for (const order of this.state.orders) {
           for (const recipe of order.recipes) {
-            let matchedStages = recipe.stages.filter(elem1 => droppedItems.some(elem2 => elem1.id === elem2.id));
-            if (matchedStages.length === recipe.stages.length) {
+            let cookStages = recipe.stages.filter(elem => elem.action === ACTIONS.COOK);
+            let matchedStages = cookStages.filter(elem1 => droppedItems.some(elem2 => elem1.pantries.find(el=>el.id==elem2.id)));
+            if (matchedStages.length === cookStages.length) {
               this.calculateScore(order);
-              callback(true);
+              callback(true, recipe);
               return;
             }
           }
