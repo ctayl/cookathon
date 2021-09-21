@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DropTarget } from "react-dnd";
 import './style.css'
- function StationItem ({droppedItems, isOver, canDrop, connectDropTarget,children }) {
+ function StationItem ({droppedItems, isOver, canDrop, connectDropTarget,children, color }) {
   const isActive = isOver && canDrop;
     let backgroundColor = '';
    if (isActive) {
@@ -12,7 +12,7 @@ import './style.css'
    }
    console.log(droppedItems);
   return connectDropTarget (
-    <div className="station" ref={connectDropTarget} style={{ backgroundColor }}>
+    <div className="station" style={{backgroundColor:color}} ref={connectDropTarget}>
       {children}
     </div>
   );

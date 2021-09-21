@@ -7,8 +7,9 @@ import { DragSource } from 'react-dnd';
   const opacity = isDragging ? 0.4 : 1;
 
   return connectDragSource (
-    <div className="pantry" style={{opacity}}>
-      <div className="pantry-img">
+    <div className="pantry card" style={{opacity}}>
+      <div className="pantry-img-block">
+        <img className="pantry-img" src={pantry.image}/>
       </div>
       <div className="pantry-title">
         <span> {pantry.name}</span>
