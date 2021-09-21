@@ -3,7 +3,7 @@ import { STATE } from "../../../data/Enums";
 import PantryItem from "../pantries/pantryItem";
 import StationItem from "../stationItem";
 import './style.css'
-export default function ServingStations({servingStations}) {
+export default function ServingStations({servingStations, completeOrders}) {
   const accepts = [STATE.COOKED];
   const [stations, setStations] = useState({});
 
@@ -23,6 +23,9 @@ export default function ServingStations({servingStations}) {
     
     setStations({ ...stations, [index]: [...stations[index], item.pantry] });
 
+    completeOrders(stations[index], (done) => {
+      
+    })
     console.log("Serving Station",stations);
 
   }, [stations]);
